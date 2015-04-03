@@ -8,13 +8,13 @@ require 'colorize'
 
 def get_name
   if @player1[:name] == "Player1"
-  puts "Player 1 What is your name?"
-  @player1[:name] = gets.chomp.green
-end
+    puts "Player 1 What is your name?"
+    @player1[:name] = gets.chomp.green
+  end
   if @player2[:name] == "Player2"
-  puts "Player 2 What is your name?"
-  @player2[:name] = gets.chomp.yellow
-end
+    puts "Player 2 What is your name?"
+    @player2[:name] = gets.chomp.yellow
+  end
 end
 
 def randomizer
@@ -64,16 +64,11 @@ def run
      if 
       player_answer.to_i != @answer
       @current_player[:lives] -= 1
-      puts
-      puts "#{@current_player[:name]} Lost One Life"
-      puts
-      puts "Lives: #{@player1[:name]} = #{@player1[:lives]} #{@player2[:name]} = #{@player2[:lives]}" 
-      puts
+      puts "\n#{@current_player[:name]} Lost One Life"
+      puts "\nLives: #{@player1[:name]} = #{@player1[:lives]} #{@player2[:name]} = #{@player2[:lives]}" 
     else
       @current_player[:score] += 1
-      puts
-      puts "Correct!".colorize(:cyan)
-      puts
+      puts "Correct!\n".colorize(:cyan)
     end
     switch_player
   end
@@ -87,13 +82,15 @@ def again
     @player1[:lives] = 3
     @player2[:lives] = 3
     run
-  else
+  else play_again == 'no'
     puts "Good-Bye"
   end
 end
 
+
 run
 again
+
 
 
 
