@@ -1,7 +1,5 @@
 class Player
-  attr_accessor :name
-  attr_accessor :lives
-  attr_accessor :score
+  attr_accessor :name, :lives, :score
   def initialize(name, lives, score)
     @name = name
     @lives = lives
@@ -26,21 +24,19 @@ class Player
   def gain_point
     if @player_answer == @answer 
       @score += 1
-      puts "Correct!"
+      puts "\nCorrect!\n".colorize(:light_green)
+    elsif @player_answer != @answer
+      @lives -= 1
+      puts "\nYou Lost A Life!\n".colorize(:light_green)
     end
   end
 
-  def lose_life
-    if @player_answer != @answer
-      @lives -= 1
-      puts "You Lost A Life"
-    end
-  end
 
   def generate_question
     @first_number = rand(1...20)
     @second_number = rand(1...20)
     randomizer
+    @player_answer = gets.chomp.to_i
   end
 
 end

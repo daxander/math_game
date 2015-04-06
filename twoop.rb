@@ -3,10 +3,10 @@ require 'colorize'
 
 def get_name
   puts "Player 1 What is your name?"
-  player1_name = gets.chomp
+  player1_name = gets.chomp.red.on_blue
   @player1 = Player.new(player1_name, 3, 0)
   puts "Player 2 What is your name?"
-  player2_name = gets.chomp
+  player2_name = gets.chomp.yellow.on_red
   @player2 = Player.new(player2_name, 3 , 0)
 end
 
@@ -33,9 +33,9 @@ def run
   @current_player = @player1
   until @player1.lives == 0 || @player2.lives == 0 do
      @current_player.generate_question
-     @player_answer = gets.chomp
      @current_player.gain_point
-     @current_player.lose_life
+     puts "Lives: #{@player1.name} = #{@player1.lives} ~ #{@player2.name} = #{@player2.lives}".colorize(:cyan) 
+     puts "Score: #{@player1.name} = #{@player1.score} ~ #{@player2.name} = #{@player2.score}\n".colorize(:yellow)
     switch_player
   end
   winner
